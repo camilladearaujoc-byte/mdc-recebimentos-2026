@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MDC — Recebimentos 2025 | 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>:root{--bg:#F0F7F5;--surface:#fff;--surface2:#E4F2EE;--border:#C8E0D9;--border2:#A8C8BE;--text:#0D2B24;--text2:#2D6B5C;--text3:#6B9E92;--cor:#0E6655;--r:10px;--r2:6px;--shadow:0 1px 3px rgba(14,102,85,.10)}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:14px;min-height:100vh}
+.topbar{background:linear-gradient(135deg,#0E6655 0%,#1ABC9C 100%);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:20;box-shadow:0 2px 12px rgba(14,102,85,.18)}
+.topbar h1{font-size:14px;font-weight:600;color:#fff;letter-spacing:.04em;text-transform:uppercase}.topbar p{font-size:11px;color:rgba(255,255,255,.6);margin-top:2px}
+.badge{display:inline-flex;align-items:center;font-size:11px;padding:4px 10px;border-radius:99px;font-weight:500}.badge-light{background:rgba(255,255,255,.18);color:#fff}.badge-green{background:#E1F5EE;color:#0E6655}
+.content{padding:24px 32px;max-width:1300px;margin:0 auto}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;box-shadow:var(--shadow)}.kpi.main{background:linear-gradient(135deg,#0E6655,#1ABC9C);border-color:#0E6655;box-shadow:0 4px 14px rgba(14,102,85,.2)}
+.kpi-label{font-size:11px;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}.kpi.main .kpi-label{color:rgba(255,255,255,.6)}
+.kpi-value{font-size:20px;font-weight:600;line-height:1;color:var(--text)}.kpi.main .kpi-value{color:#fff}.kpi-sub{font-size:11px;color:var(--text3);margin-top:4px}.kpi.main .kpi-sub{color:rgba(255,255,255,.5)}
+.grid2{display:grid;grid-template-columns:1.3fr 1fr;gap:16px;margin-bottom:18px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;margin-bottom:18px}
+.card-header{padding:13px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.card-title{font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em}.card-body{padding:14px 18px}.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}thead th{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;padding:7px 12px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap;background:var(--bg)}thead th.r{text-align:right}
+tbody td{padding:8px 12px;border-bottom:1px solid var(--border);white-space:nowrap}tbody td.r{text-align:right;font-family:'DM Mono',monospace;font-size:12px}tbody td.muted{color:var(--text3);font-size:12px}tbody tr:last-child td{border-bottom:none}tbody tr:hover td{background:var(--surface2)}
+.tfoot-row td{font-weight:600;background:var(--surface2);border-top:1.5px solid var(--border2);padding:9px 12px}
+.subtotal-row td{font-weight:600;background:var(--surface2);font-size:12px;padding:6px 12px;color:var(--text2)}
+.bar-row{display:flex;align-items:center;gap:8px}.bar-track{height:5px;background:var(--border);border-radius:3px;flex:1;min-width:50px}.bar-fill{height:5px;background:linear-gradient(90deg,#0E6655,#1ABC9C);border-radius:3px}
+.nf-badge{font-family:'DM Mono',monospace;font-size:11px;background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:1px 6px;color:var(--cor)}
+.mpill{font-size:12px;padding:4px 12px;border-radius:99px;border:1px solid var(--border);background:var(--surface);cursor:pointer;color:var(--text2);font-weight:500;transition:all .12s}.mpill:hover{border-color:var(--cor);color:var(--cor)}.mpill.active{background:var(--cor);border-color:var(--cor);color:#fff}
+.section-heading{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin:0 0 10px}
+.year-toggle{display:flex;border:1.5px solid var(--cor);border-radius:var(--r2);overflow:hidden}.ytab{padding:5px 16px;font-size:12px;font-weight:600;cursor:pointer;color:var(--cor);background:var(--surface);border:none;transition:all .12s}.ytab.active{background:var(--cor);color:#fff}
+.filter-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.loading{text-align:center;padding:60px;color:var(--text3);font-size:14px}
+::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+@media(max-width:800px){.kpi-row{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}}</style>
+</head>
+<body>
+<div class="topbar">
+  <div><h1>MDC Industria de Contêineres Inteligentes</h1><p>Controle de Recebimentos 2025 | 2026</p></div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <span class="badge badge-green" id="data-badge">● Carregando...</span>
+    <span class="badge badge-light" id="ano-badge">2026</span>
+  </div>
+</div>
+<div class="content" id="content"><div class="loading">⏳ Carregando dados...</div></div>
+<script>
+const SUPABASE_URL = "https://gntvlylkiogrjjqukmnw.supabase.co";
+const SUPABASE_KEY = "sb_publishable_v12P_VeNUOAH0SKl6NYN1A_snSzJz4F";
+
+async function loadData(ano) {
+  var all = [], page = 0, pageSize = 1000;
+  while(true) {
+    var url = SUPABASE_URL + "/rest/v1/recebimentos_mdc?select=*&limit=" + pageSize + "&offset=" + (page*pageSize);
+    var r = await fetch(url, {
+      headers: {"apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY, "Accept": "application/json"}
+    });
+    if (!r.ok) throw new Error("Supabase error: " + r.status);
+    var rows = await r.json();
+    if (!Array.isArray(rows) || rows.length === 0) break;
+    var filtered = rows.filter(function(r){ return parseInt(r.ano) === ano; });
+    all = all.concat(filtered);
+    if (rows.length < pageSize) break;
+    page++;
+  }
+  return all;
+}
+
+async function init() {
+  try {
+    var rows2026 = await loadData(2026);
+    var rows2025 = await loadData(2025);
+    ALL_DATA["2026"] = buildDFromRows(rows2026);
+    ALL_DATA["2025"] = buildDFromRows(rows2025);
+    var _t = new Date();
+    document.getElementById("data-badge").textContent = "● Atualizado " +
+      String(_t.getDate()).padStart(2,"0") + "/" +
+      String(_t.getMonth()+1).padStart(2,"0") + "/" + _t.getFullYear();
+    render();
+  } catch(e) {
+    document.getElementById("content").innerHTML = "<div class='loading'>❌ Erro: " + e.message + "</div>";
+  }
+}
+
+const MESES_ORDER = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+const MMAP_NOME = {"01":"Janeiro","02":"Fevereiro","03":"Março","04":"Abril","05":"Maio","06":"Junho","07":"Julho","08":"Agosto","09":"Setembro","10":"Outubro","11":"Novembro","12":"Dezembro"};
+const MMAP_NUM = {"01":"Jan","02":"Fev","03":"Mar","04":"Abr","05":"Mai","06":"Jun","07":"Jul","08":"Ago","09":"Set","10":"Out","11":"Nov","12":"Dez"};
+const CORES = ["#0E6655","#1ABC9C","#148F77","#1D6A8A","#2E86C1","#7D3C98","#BA4A00","#B7950B","#1E8449","#6E2F88","#CB4335","#2471A3","#117A65","#D35400","#7B241C"];
+
+var anoAtivo = "2026";
+var filterMes = "Todos";
+var activeCharts = [];
+var ALL_DATA = {};
+
+function destroyCharts(){ activeCharts.forEach(function(c){ try{c.destroy();}catch(e){} }); activeCharts=[]; }
+function fmtR(v){ return "R$ "+Math.round(v).toLocaleString("pt-BR"); }
+function fmtM(v){ return "R$ "+(v/1e6).toFixed(2).replace(".",",")+"\u00a0M"; }
+function fmtK(v){ if(!v||v===0)return"—"; if(v>=1e6)return"R$ "+(v/1e6).toFixed(2).replace(".",",")+"\u00a0M"; if(v>=1e3)return"R$ "+(v/1e3).toFixed(1)+"K"; return"R$ "+Math.round(v).toLocaleString("pt-BR"); }
+function pctR(v,t){ return t>0?(v/t*100).toFixed(1)+"%":"—"; }
+function getMeses(d){ return MESES_ORDER.filter(function(m){ return d.pm[m]; }); }
+
+function buildDFromRows(rows) {
+  var d = {total:0, qtd:0, pm:{}, cli:{}, cli_list:[], txs:[]};
+  rows.forEach(function(row) {
+    var val = parseFloat(row.valor)||0;
+    var mes = row.mes||"";
+    d.total += val;
+    d.qtd++;
+    d.pm[mes] = (d.pm[mes]||0)+val;
+    d.cli[row.cliente] = (d.cli[row.cliente]||0)+val;
+    var dt = row.data ? row.data.split("-").reverse().join("/") : "";
+    d.txs.push([dt, row.cliente, val, row.nf||""]);
+  });
+  d.total = Math.round(d.total*100)/100;
+  d.cli_list = Object.keys(d.cli).sort(function(a,b){ return d.cli[b]-d.cli[a]; });
+  d.txs.sort(function(a,b){ return b[0].localeCompare(a[0]); });
+  return d;
+}
+
+function setAno(a){
+  anoAtivo=a; filterMes="Todos";
+  document.getElementById("ano-badge").textContent=a;
+  render();
+}
+function setMes(m){ filterMes=m; render(); }
+
+function yHTML(){
+  return '<div class="year-toggle">'+
+    '<button class="ytab'+(anoAtivo==="2025"?" active":"")+'" onclick="setAno(\'2025\')">2025</button>'+
+    '<button class="ytab'+(anoAtivo==="2026"?" active":"")+'" onclick="setAno(\'2026\')">2026</button>'+
+    '</div>';
+}
+
+function buildRows4(txs){
+  if(!txs||!txs.length) return "<tr><td colspan='4' style='text-align:center;color:var(--text3);padding:20px'>Nenhum lançamento encontrado</td></tr>";
+  var rows="", i=0;
+  while(i<txs.length){
+    var p=(txs[i][0]||"").split("/");
+    var mk=(p[1]||"00")+"/"+(p[2]||"0000");
+    var j=i, sub=0;
+    while(j<txs.length){
+      var p2=(txs[j][0]||"").split("/");
+      if((p2[1]||"00")+"/"+(p2[2]||"0000")!==mk) break;
+      var nf=txs[j][3]?"<span class='nf-badge'>"+txs[j][3]+"</span>":"";
+      rows+="<tr><td class='muted'>"+txs[j][0]+"</td><td style='font-weight:500'>"+txs[j][1]+"</td><td class='r'>"+fmtR(txs[j][2])+"</td><td>"+nf+"</td></tr>";
+      sub+=txs[j][2]; j++;
+    }
+    rows+="<tr class='subtotal-row'><td class='muted' colspan='2'>Total "+(MMAP_NOME[p[1]]||p[1])+"</td><td class='r' style='border-top:1px solid var(--border2)'>"+fmtR(sub)+"</td><td style='border-top:1px solid var(--border2)'></td></tr>";
+    i=j;
+  }
+  return rows;
+}
+
+function render(){
+  destroyCharts();
+  var d = ALL_DATA[anoAtivo];
+  if(!d){ document.getElementById("content").innerHTML="<div class='loading'>Sem dados para "+anoAtivo+"</div>"; return; }
+  var meses=getMeses(d);
+  var clis=(d.cli_list||[]).map(function(c){ return [c, d.cli[c]]; });
+  var maxCli=clis.length?clis[0][1]:1;
+  var melhorMesVal=meses.length?Math.max.apply(null,meses.map(function(m){ return d.pm[m]||0; })):0;
+  var melhorMes=meses.find(function(m){ return (d.pm[m]||0)===melhorMesVal; })||"—";
+
+  var cliRows="";
+  clis.forEach(function(item,i){
+    var c=item[0]; var v=item[1];
+    cliRows+="<tr><td class='muted'>"+(i+1)+"</td><td style='font-weight:"+(i<3?"600":"400")+"'>"+c+"</td><td class='r'>"+fmtR(v)+"</td><td class='r muted'>"+pctR(v,d.total)+"</td><td><div class='bar-row'><div class='bar-track'><div class='bar-fill' style='width:"+(v/maxCli*100).toFixed(1)+"%'></div></div></div></td></tr>";
+  });
+
+  var legend="";
+  clis.slice(0,7).forEach(function(item){
+    var c=item[0]; var v=item[1];
+    legend+="<div style='display:flex;justify-content:space-between;margin-bottom:6px'><span style='color:var(--text2);max-width:150px;overflow:hidden;text-overflow:ellipsis'>"+c+"</span><span style='font-family:DM Mono,monospace;font-size:11px;color:var(--text3);margin-left:4px'>"+pctR(v,d.total)+"</span></div>";
+  });
+
+  var txs=d.txs;
+  if(filterMes!=="Todos") txs=txs.filter(function(t){ var mm=t[0]?t[0].split("/")[1]:""; return MMAP_NUM[mm]===filterMes; });
+
+  var mesPills="";
+  ["Todos"].concat(meses).forEach(function(m){
+    mesPills+="<button class='mpill"+(filterMes===m?" active":"")+"' onclick='setMes("+JSON.stringify(m)+")'>"+m+"</button>";
+  });
+
+  document.getElementById("content").innerHTML=
+    "<div style='display:flex;justify-content:flex-end;margin-bottom:16px'>"+yHTML()+"</div>"+
+    "<div class='kpi-row'>"+
+      "<div class='kpi main'><div class='kpi-label'>Total recebido</div><div class='kpi-value'>"+fmtM(d.total)+"</div><div class='kpi-sub'>"+anoAtivo+"</div></div>"+
+      "<div class='kpi'><div class='kpi-label'>Transações</div><div class='kpi-value'>"+d.qtd+"</div><div class='kpi-sub'>lançamentos</div></div>"+
+      "<div class='kpi'><div class='kpi-label'>Clientes</div><div class='kpi-value'>"+clis.length+"</div><div class='kpi-sub'>distintos</div></div>"+
+      "<div class='kpi'><div class='kpi-label'>Melhor mês</div><div class='kpi-value'>"+melhorMes+"</div><div class='kpi-sub'>"+fmtK(melhorMesVal)+"</div></div>"+
+    "</div>"+
+    "<div class='grid2'>"+
+      "<div class='card'><div class='card-header'><span class='card-title'>Recebimentos mensais "+anoAtivo+"</span></div><div class='card-body'><div style='position:relative;height:220px'><canvas id='cBar'></canvas></div></div></div>"+
+      "<div class='card'><div class='card-header'><span class='card-title'>Participação por cliente</span></div><div class='card-body' style='display:flex;gap:14px;align-items:center'><div style='position:relative;width:120px;height:120px;flex-shrink:0'><canvas id='cDough'></canvas></div><div style='flex:1;font-size:12px'>"+legend+"</div></div></div>"+
+    "</div>"+
+    "<div class='card'><div class='card-header'><span class='card-title'>Clientes — "+anoAtivo+"</span></div><div class='tbl-wrap'><table><thead><tr><th>#</th><th>Cliente</th><th class='r'>Total</th><th class='r'>%</th><th style='min-width:130px'>Distribuição</th></tr></thead><tbody>"+cliRows+"</tbody><tfoot><tr class='tfoot-row'><td></td><td>Total</td><td class='r'>"+fmtR(d.total)+"</td><td class='r muted'>100%</td><td></td></tr></tfoot></table></div></div>"+
+    "<div style='display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px'>"+
+      "<div class='section-heading' style='margin:0'>Lançamentos ("+txs.length+")</div>"+
+      "<div class='filter-row'>"+mesPills+"</div>"+
+    "</div>"+
+    "<div class='card'><div class='tbl-wrap'><table><thead><tr><th>Data</th><th>Cliente</th><th class='r'>Valor (R$)</th><th>NF</th></tr></thead><tbody>"+buildRows4(txs)+"</tbody></table></div></div>";
+
+  var c1=new Chart(document.getElementById("cBar"),{type:"bar",data:{labels:meses,datasets:[{label:"Recebido",data:meses.map(function(m){ return d.pm[m]||0; }),backgroundColor:"rgba(14,102,85,0.75)",borderColor:"#0E6655",borderWidth:1,borderRadius:5,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){ return fmtR(c.raw); }}}},scales:{x:{ticks:{font:{size:11}}},y:{ticks:{callback:function(v){ return fmtK(v); },font:{size:10}},grid:{color:"rgba(14,102,85,.06)"}}}}});
+  var top6=clis.slice(0,6), outros=clis.slice(6).reduce(function(s,c){ return s+c[1]; },0);
+  var dD=top6.map(function(c){ return c[1]; }).concat(outros>0?[outros]:[]);
+  var dL=top6.map(function(c){ return c[0]; }).concat(outros>0?["Outros"]:[]);
+  var c2=new Chart(document.getElementById("cDough"),{type:"doughnut",data:{labels:dL,datasets:[{data:dD,backgroundColor:CORES.slice(0,dL.length),borderWidth:2,borderColor:"#fff"}]},options:{responsive:true,maintainAspectRatio:false,cutout:"62%",plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){ return c.label+": "+fmtR(c.raw); }}}}}});
+  activeCharts.push(c1,c2);
+}
+
+
+init();
+</script>
+</body>
+</html>
